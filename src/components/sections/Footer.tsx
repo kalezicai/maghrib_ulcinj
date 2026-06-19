@@ -28,6 +28,12 @@ export function Footer() {
             <li><a href="#spa" className="hover:text-[#C5A880] transition-colors">The Private Spa Sanctuary</a></li>
             <li><a href="#reviews" className="hover:text-[#C5A880] transition-colors">Verified Guest Reviews</a></li>
             <li><a href="#location" className="hover:text-[#C5A880] transition-colors">Ulcinj Travel Guide</a></li>
+            <li className="pt-2 border-t border-stone-800 mt-2">
+              <Link href="/gallery" className="hover:text-[#C5A880] transition-colors">Photo Gallery</Link>
+            </li>
+            <li><Link href="/blog" className="hover:text-[#C5A880] transition-colors">Travel Blog</Link></li>
+            <li><Link href="/ramadan" className="hover:text-[#C5A880] transition-colors">Ramadan Package</Link></li>
+            <li><Link href="/halal-hotel-ulcinj" className="hover:text-[#C5A880] transition-colors">Halal Hotel Ulcinj Guide</Link></li>
           </ul>
         </div>
 

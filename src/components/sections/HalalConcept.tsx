@@ -82,7 +82,7 @@ export function HalalConcept() {
           </div>
           <div className="h-[280px] md:h-auto min-h-[240px]">
             <img
-              src="https://images.pexels.com/photos/15585593/pexels-photo-15585593.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=600&w=800"
+              src="/images/gallery/hotel-maghrib-gallery-07.webp"
               alt="Beautiful terrace with sea view at sunset, Ulcinj Montenegro"
               className="w-full h-full object-cover"
             />

@@ -5,7 +5,7 @@ export function HeroSection() {
     <section className="relative min-h-[90vh] flex items-center justify-center bg-stone-950 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.pexels.com/photos/27607236/pexels-photo-27607236.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1080&w=1920"
+          src="/images/gallery/hotel-maghrib-gallery-03.webp"
           alt="Majestic sunset over Adriatic sea, Ulcinj, Montenegro - Hotel Maghrib"
           className="w-full h-full object-cover object-center opacity-75 scale-105 animate-[subtle-zoom_20s_infinite_alternate]"
         />

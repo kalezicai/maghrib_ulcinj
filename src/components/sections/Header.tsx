@@ -30,6 +30,10 @@ export function Header({ nasheedPlaying, toggleNasheed, mobileMenuOpen, setMobil
           <a href="#spa" className="hover:text-stone-950 transition-colors">Private Spa</a>
           <a href="#reviews" className="hover:text-stone-950 transition-colors">Guest Reviews</a>
           <a href="#location" className="hover:text-stone-950 transition-colors">Ulcinj Guide</a>
+          <div className="w-px h-4 bg-stone-300" />
+          <Link href="/gallery" className="hover:text-stone-950 transition-colors">Gallery</Link>
+          <Link href="/blog" className="hover:text-stone-950 transition-colors">Blog</Link>
+          <Link href="/ramadan" className="hover:text-stone-950 transition-colors">Ramadan</Link>
           <Link href="/brand-brief" className="text-[#C5A880] hover:underline transition-colors flex items-center gap-1 normal-case tracking-normal font-medium">
             <Info className="w-3.5 h-3.5" /> Brand Brief
           </Link>
@@ -84,6 +88,10 @@ export function Header({ nasheedPlaying, toggleNasheed, mobileMenuOpen, setMobil
             <a href="#spa" onClick={() => setMobileMenuOpen(false)} className="hover:text-stone-950 py-1 border-b border-stone-100">Private Spa</a>
             <a href="#reviews" onClick={() => setMobileMenuOpen(false)} className="hover:text-stone-950 py-1 border-b border-stone-100">Guest Reviews</a>
             <a href="#location" onClick={() => setMobileMenuOpen(false)} className="hover:text-stone-950 py-1 border-b border-stone-100">Ulcinj Guide</a>
+            <div className="border-b border-stone-100 my-1" />
+            <Link href="/gallery" onClick={() => setMobileMenuOpen(false)} className="hover:text-stone-950 py-1 border-b border-stone-100">Gallery</Link>
+            <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="hover:text-stone-950 py-1 border-b border-stone-100">Blog</Link>
+            <Link href="/ramadan" onClick={() => setMobileMenuOpen(false)} className="hover:text-stone-950 py-1 border-b border-stone-100">Ramadan Package</Link>
             <Link href="/brand-brief" onClick={() => setMobileMenuOpen(false)} className="text-[#C5A880] py-1 flex items-center gap-2">
               <Info className="w-4 h-4" /> Design System (Brand Brief)
             </Link>
