@@ -6,14 +6,36 @@ const globalForDb = globalThis as typeof globalThis & {
   __arenaNextJsDrizzleDb?: ReturnType<typeof drizzle>;
 };
 
-function lazyDb(): ReturnType<typeof drizzle> {
+function createNoopDb(): any {
+  return new Proxy(
+    {},
+    {
+      get(_, prop) {
+        if (prop === "then") return undefined;
+        return () =>
+          new Proxy(
+            {},
+            {
+              get(_, q) {
+                if (q === "then") return undefined;
+                return () => Promise.resolve([]);
+              },
+            },
+          );
+      },
+    },
+  );
+}
+
+function lazyDb(): ReturnType<typeof drizzle> | ReturnType<typeof createNoopDb> {
   if (globalForDb.__arenaNextJsDrizzleDb) {
     return globalForDb.__arenaNextJsDrizzleDb;
   }
 
   const databaseUrl = process.env.DATABASE_URL;
   if (!databaseUrl) {
-    throw new Error("DATABASE_URL is required");
+    console.warn("DATABASE_URL not set — using noop database");
+    return createNoopDb();
   }
 
   if (!globalForDb.__arenaNextJsPostgresqlPool) {

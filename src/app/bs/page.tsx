@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { reviews, spaReservations } from "@/db/schema";
+import { spaReservations } from "@/db/schema";
 import { getReviews, seedReviewsIfEmpty } from "../actions";
 import HotelPortal from "../components/HotelPortal";
 import { desc } from "drizzle-orm";
@@ -39,10 +39,15 @@ export default async function BsPage() {
   await seedReviewsIfEmpty();
 
   const guestReviews = await getReviews();
-  const activeSpaReservations = await db
-    .select()
-    .from(spaReservations)
-    .orderBy(desc(spaReservations.createdAt));
+  let activeSpaReservations: any[] = [];
+  try {
+    activeSpaReservations = await db
+      .select()
+      .from(spaReservations)
+      .orderBy(desc(spaReservations.createdAt));
+  } catch {
+    activeSpaReservations = [];
+  }
 
   return <HotelPortal initialReviews={guestReviews} initialSpaReservations={activeSpaReservations} />;
 }

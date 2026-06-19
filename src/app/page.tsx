@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { reviews, spaReservations } from "@/db/schema";
+import { spaReservations } from "@/db/schema";
 import { getReviews, seedReviewsIfEmpty } from "./actions";
 import HotelPortal from "./components/HotelPortal";
 import { desc } from "drizzle-orm";
@@ -54,10 +54,15 @@ export default async function HomePage() {
 
   // Fetch all reviews and active spa reservations to pass to the interactive client component
   const guestReviews = await getReviews();
-  const activeSpaReservations = await db
-    .select()
-    .from(spaReservations)
-    .orderBy(desc(spaReservations.createdAt));
+  let activeSpaReservations: any[] = [];
+  try {
+    activeSpaReservations = await db
+      .select()
+      .from(spaReservations)
+      .orderBy(desc(spaReservations.createdAt));
+  } catch {
+    activeSpaReservations = [];
+  }
 
   // JSON-LD Structured Data Schema for rich Google snippets
   const jsonLd = {
