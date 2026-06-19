@@ -8,7 +8,7 @@ export function VisionSection() {
           <div className="lg:col-span-6 grid grid-cols-12 gap-4">
             <div className="col-span-8 relative rounded-3xl overflow-hidden shadow-md group">
               <img
-                src="/images/gallery/hotel-maghrib-gallery-10.webp"
+                src="/images/gallery/hotel-maghrib-gallery-29.webp"
                 alt="Crystal clear waters of Adriatic Sea, Ulcinj near Hotel Maghrib"
                 className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -17,7 +17,7 @@ export function VisionSection() {
             <div className="col-span-4 flex flex-col justify-end">
               <div className="rounded-3xl overflow-hidden shadow-md mb-4 group">
                 <img
-                  src="/images/gallery/hotel-maghrib-gallery-04.webp"
+                  src="/images/gallery/hotel-maghrib-gallery-58.webp"
                   alt="Fresh rich breakfast serving coffee - Halal certified hotel"
                   className="w-full h-[180px] object-cover hover:scale-105 transition-transform duration-700"
                 />
