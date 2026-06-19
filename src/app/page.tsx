@@ -1,7 +1,5 @@
-import { getReviews } from "./actions";
+import { getReviews } from "@/data/reviews";
 import HotelPortal from "./components/HotelPortal";
-
-export const dynamic = "force-dynamic";
 
 // High-end, custom SEO metadata for Hotel Maghrib
 export const metadata = {
@@ -45,8 +43,8 @@ export const metadata = {
   },
 };
 
-export default async function HomePage() {
-  const guestReviews = await getReviews();
+export default function HomePage() {
+  const guestReviews = getReviews();
 
   // JSON-LD Structured Data Schema for rich Google snippets
   const jsonLd = {

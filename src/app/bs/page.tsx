@@ -1,7 +1,5 @@
-import { getReviews } from "../actions";
+import { getReviews } from "@/data/reviews";
 import HotelPortal from "../components/HotelPortal";
-
-export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Hotel Maghrib | 100% Halal Hotel u Ulcinju, Crna Gora",
@@ -32,7 +30,7 @@ export const metadata = {
   },
 };
 
-export default async function BsPage() {
-  const guestReviews = await getReviews();
+export default function BsPage() {
+  const guestReviews = getReviews();
   return <HotelPortal initialReviews={guestReviews} initialSpaReservations={[]} />;
 }

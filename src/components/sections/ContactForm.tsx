@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { Send, Check, AlertTriangle } from "lucide-react";
-import { submitInquiry } from "@/app/actions";
+import { submitInquiry } from "@/data/actions";
 
 export function ContactForm() {
   const [form, setForm] = useState({

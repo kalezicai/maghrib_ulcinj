@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition, lazy, Suspense } from "react";
-import { submitBookingRequest, submitReview, reserveSpaSlot } from "../actions";
+import { submitBookingRequest, submitReview, reserveSpaSlot } from "@/data/actions";
 import { useNasheed } from "@/hooks/useNasheed";
 import { useReviews } from "@/hooks/useReviews";
 import { useSpa } from "@/hooks/useSpa";
