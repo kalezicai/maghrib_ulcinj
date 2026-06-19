@@ -8,7 +8,7 @@ export const ROOMS: RoomType[] = [
     size: "38 m²",
     capacity: "2 Guests",
     bed: "1 King Bed (Premium Orthopedic)",
-    image: "/images/gallery/hotel-maghrib-gallery-01.webp",
+    image: "/images/gallery/hotel-maghrib-gallery-32.webp",
     description: "A gorgeous, light-filled sanctuary featuring a panoramic private balcony looking out to the Adriatic Sea. Thoughtfully appointed with warm sand tones, clean lines, and a peaceful ambiance.",
     amenities: ["Private Balcony", "Sea View", "100% Halal Minibar", "Qibla Direction Marker", "Silent Mini-Fridge", "Rain Shower", "Espresso Machine", "In-room Safe"],
     highlights: ["Quiet", "Romantic", "Sea View", "High-Tech"]
@@ -20,7 +20,7 @@ export const ROOMS: RoomType[] = [
     size: "55 m²",
     capacity: "Up to 5 Guests",
     bed: "1 King Bed + 3 Single Beds",
-    image: "/images/gallery/hotel-maghrib-gallery-02.webp",
+    image: "/images/gallery/hotel-maghrib-gallery-37.webp",
     description: "Perfect for families. A spacious layout featuring a hidden-from-view private balcony (ideal for sunbathing in total privacy).",
     amenities: ["Spacious Lounge", "Privacy Balcony", "Extra Storage", "Qibla Direction Marker", "Child-friendly design", "HALAL snacks", "2 Bathrooms", "Smart TV"],
     highlights: ["Kid-friendly", "Spacious", "Privacy-focused", "Great Value"]
@@ -32,7 +32,7 @@ export const ROOMS: RoomType[] = [
     size: "42 m²",
     capacity: "2 Guests",
     bed: "1 Ultra-Plush King Bed",
-    image: "/images/gallery/hotel-maghrib-gallery-05.webp",
+    image: "/images/gallery/hotel-maghrib-gallery-45.webp",
     description: "Designed for couples seeking a romantic, quiet and luxury experience. Perched high on the hill next to the pine trees.",
     amenities: ["Sunset Sea View", "High-Tech Comforts", "Qibla Direction Marker", "Premium Organic Spa Toiletries", "Fresh Robes & Slippers", "Teatime Kettle", "Writing Desk"],
     highlights: ["Luxury", "Romantic", "Great View", "Quiet"]
@@ -44,7 +44,7 @@ export const ROOMS: RoomType[] = [
     size: "48 m²",
     capacity: "3 Guests",
     bed: "1 King Bed + 1 Single Bed",
-    image: "/images/gallery/hotel-maghrib-gallery-06.webp",
+    image: "/images/gallery/hotel-maghrib-gallery-57.webp",
     description: "Bright and modern room offering a gorgeous view over the Adriatic and the iconic pine trees.",
     amenities: ["Panoramic Balcony", "Sea View", "100% Halal Concept", "Qibla Marker", "Silent Mini-Fridge", "Luxury Bathrobes", "High-speed Wi-Fi"],
     highlights: ["Great View", "Modern", "Quiet", "Clean"]
