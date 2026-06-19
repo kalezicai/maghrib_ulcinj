@@ -4,9 +4,9 @@ import { useReviews } from "./useReviews";
 import type { ReviewType } from "@/lib/types";
 
 const mockReviews: ReviewType[] = [
-  { id: 1, authorName: "Sanela M.", rating: 5, tripType: "Family", text: "Great halal hotel", roomsRating: 5, serviceRating: 5, locationRating: 5, createdAt: new Date("2025-07-01") },
-  { id: 2, authorName: "Ermin T.", rating: 5, tripType: "Couple", text: "Amazing sea view", roomsRating: 5, serviceRating: 4, locationRating: 5, createdAt: new Date("2025-06-15") },
-  { id: 3, authorName: "Gresa K.", rating: 4, tripType: "Vacation", text: "Very clean and comfortable", roomsRating: 4, serviceRating: 5, locationRating: 4, createdAt: new Date("2025-05-20") },
+  { authorName: "Sanela M.", rating: 5, tripType: "Family", text: "Great halal hotel", roomsRating: 5, serviceRating: 5, locationRating: 5, createdAt: new Date("2025-07-01").toISOString() },
+  { authorName: "Ermin T.", rating: 5, tripType: "Couple", text: "Amazing sea view", roomsRating: 5, serviceRating: 4, locationRating: 5, createdAt: new Date("2025-06-15").toISOString() },
+  { authorName: "Gresa K.", rating: 4, tripType: "Vacation", text: "Very clean and comfortable", roomsRating: 4, serviceRating: 5, locationRating: 4, createdAt: new Date("2025-05-20").toISOString() },
 ];
 
 describe("useReviews", () => {
@@ -54,9 +54,9 @@ describe("useReviews", () => {
   it("adds a new review to the list", () => {
     const { result } = renderHook(() => useReviews(mockReviews));
     const newReview: ReviewType = {
-      id: 4, authorName: "New Guest", rating: 5, tripType: "Family",
+      authorName: "New Guest", rating: 5, tripType: "Family",
       text: "Wonderful stay", roomsRating: 5, serviceRating: 5, locationRating: 5,
-      createdAt: new Date(),
+      createdAt: new Date().toISOString(),
     };
     act(() => result.current.addReview(newReview));
     expect(result.current.reviews).toHaveLength(4);

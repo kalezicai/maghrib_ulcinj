@@ -14,7 +14,7 @@ describe("ROOMS", () => {
       expect(room.size).toBeTruthy();
       expect(room.capacity).toBeTruthy();
       expect(room.bed).toBeTruthy();
-      expect(room.image).toMatch(/^https?:\/\//);
+      expect(room.image).toMatch(/^\/images\//);
       expect(room.amenities.length).toBeGreaterThan(0);
       expect(room.highlights.length).toBeGreaterThan(0);
     }

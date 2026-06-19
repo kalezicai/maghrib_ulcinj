@@ -1,8 +1,5 @@
-import { db } from "@/db";
-import { spaReservations } from "@/db/schema";
-import { getReviews, seedReviewsIfEmpty } from "../actions";
+import { getReviews } from "../actions";
 import HotelPortal from "../components/HotelPortal";
-import { desc } from "drizzle-orm";
 
 export const dynamic = "force-dynamic";
 
@@ -36,18 +33,6 @@ export const metadata = {
 };
 
 export default async function DePage() {
-  await seedReviewsIfEmpty();
-
   const guestReviews = await getReviews();
-  let activeSpaReservations: any[] = [];
-  try {
-    activeSpaReservations = await db
-      .select()
-      .from(spaReservations)
-      .orderBy(desc(spaReservations.createdAt));
-  } catch {
-    activeSpaReservations = [];
-  }
-
-  return <HotelPortal initialReviews={guestReviews} initialSpaReservations={activeSpaReservations} />;
+  return <HotelPortal initialReviews={guestReviews} initialSpaReservations={[]} />;
 }

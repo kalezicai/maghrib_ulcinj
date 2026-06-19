@@ -58,7 +58,7 @@ export default function HotelPortal({ initialReviews, initialSpaReservations }: 
     startTransition(async () => {
       const res = await submitBookingRequest(booking.form);
       if (res.success) {
-        booking.setSuccess(res.data);
+        booking.setSuccess(res.message);
         if (booking.form.privateSpaRequested && booking.form.spaSlotPreference) {
           spa.addReservation(booking.createSpaReservationFromBooking());
         }
@@ -78,7 +78,6 @@ export default function HotelPortal({ initialReviews, initialSpaReservations }: 
       if (res.success) {
         setReviewSuccess(res.message);
         const newReviewObj: ReviewType = {
-          id: res.data?.id || Math.random(),
           authorName: reviewForm.authorName,
           rating: reviewForm.rating,
           tripType: reviewForm.tripType,
@@ -86,7 +85,7 @@ export default function HotelPortal({ initialReviews, initialSpaReservations }: 
           roomsRating: reviewForm.roomsRating,
           serviceRating: reviewForm.serviceRating,
           locationRating: reviewForm.locationRating,
-          createdAt: new Date()
+          createdAt: new Date().toISOString()
         };
         addReview(newReviewObj);
         resetForm();
@@ -110,7 +109,6 @@ export default function HotelPortal({ initialReviews, initialSpaReservations }: 
       if (res.success) {
         spa.setSuccess(res.message);
         const newSpaRes: SpaReservationType = {
-          id: res.data?.id || Math.random(),
           guestName: spa.form.guestName,
           roomNumber: spa.form.roomNumber || "Suite",
           reservationDate: spa.form.reservationDate,

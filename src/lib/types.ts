@@ -1,19 +1,17 @@
 export interface ReviewType {
-  id: number;
   authorName: string;
   rating: number;
-  tripType: string | null;
+  tripType: string;
   text: string;
-  roomsRating: number | null;
-  serviceRating: number | null;
-  locationRating: number | null;
-  createdAt: Date;
+  roomsRating: number;
+  serviceRating: number;
+  locationRating: number;
+  createdAt: string;
 }
 
 export interface SpaReservationType {
-  id: number;
   guestName: string;
-  roomNumber: string | null;
+  roomNumber: string;
   reservationDate: string;
   timeSlot: string;
   spaArea: string;

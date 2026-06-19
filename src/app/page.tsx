@@ -1,8 +1,5 @@
-import { db } from "@/db";
-import { spaReservations } from "@/db/schema";
-import { getReviews, seedReviewsIfEmpty } from "./actions";
+import { getReviews } from "./actions";
 import HotelPortal from "./components/HotelPortal";
-import { desc } from "drizzle-orm";
 
 export const dynamic = "force-dynamic";
 
@@ -49,20 +46,7 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  // Seed the reviews table with the curated Google reviews if it's empty
-  await seedReviewsIfEmpty();
-
-  // Fetch all reviews and active spa reservations to pass to the interactive client component
   const guestReviews = await getReviews();
-  let activeSpaReservations: any[] = [];
-  try {
-    activeSpaReservations = await db
-      .select()
-      .from(spaReservations)
-      .orderBy(desc(spaReservations.createdAt));
-  } catch {
-    activeSpaReservations = [];
-  }
 
   // JSON-LD Structured Data Schema for rich Google snippets
   const jsonLd = {
@@ -138,16 +122,13 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* Insert SEO schema.org script */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
-      {/* Render the full interactive light theme portal */}
       <HotelPortal
         initialReviews={guestReviews}
-        initialSpaReservations={activeSpaReservations}
+        initialSpaReservations={[]}
       />
     </>
   );

@@ -3,7 +3,7 @@
 import { Search, Filter, Star, X, MessageSquare } from "lucide-react";
 
 interface ReviewsSectionProps {
-  reviewsList: { id: number; authorName: string; rating: number; tripType: string | null; text: string; roomsRating: number | null; serviceRating: number | null; locationRating: number | null }[];
+  reviewsList: { authorName: string; rating: number; tripType: string; text: string; roomsRating: number; serviceRating: number; locationRating: number; createdAt: string }[];
   filteredReviews: any[];
   searchQuery: string;
   setSearchQuery: (v: string) => void;

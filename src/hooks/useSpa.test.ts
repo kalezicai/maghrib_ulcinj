@@ -4,8 +4,8 @@ import { useSpa } from "./useSpa";
 import type { SpaReservationType } from "@/lib/types";
 
 const mockReservations: SpaReservationType[] = [
-  { id: 1, guestName: "Sanela", roomNumber: "201", reservationDate: "2026-07-15", timeSlot: "09:00 - 10:00", spaArea: "Full Spa (Private Use)" },
-  { id: 2, guestName: "Ermin", roomNumber: "305", reservationDate: "2026-07-15", timeSlot: "10:00 - 11:00", spaArea: "Pool Only" },
+  { guestName: "Sanela", roomNumber: "201", reservationDate: "2026-07-15", timeSlot: "09:00 - 10:00", spaArea: "Full Spa (Private Use)" },
+  { guestName: "Ermin", roomNumber: "305", reservationDate: "2026-07-15", timeSlot: "10:00 - 11:00", spaArea: "Pool Only" },
 ];
 
 describe("useSpa", () => {
@@ -34,7 +34,7 @@ describe("useSpa", () => {
   it("adds a new reservation", () => {
     const { result } = renderHook(() => useSpa(mockReservations));
     const newRes: SpaReservationType = {
-      id: 3, guestName: "Amina", roomNumber: "102",
+      guestName: "Amina", roomNumber: "102",
       reservationDate: "2026-07-16", timeSlot: "14:00 - 15:00", spaArea: "Sauna & Jacuzzi",
     };
     act(() => result.current.addReservation(newRes));

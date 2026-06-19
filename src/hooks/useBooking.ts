@@ -20,7 +20,6 @@ export function useBooking() {
   const [error, setError] = useState("");
 
   const createSpaReservationFromBooking = (): SpaReservationType => ({
-    id: Math.random(),
     guestName: form.guestName,
     roomNumber: "TBD (On Arrival)",
     reservationDate: form.checkIn,
