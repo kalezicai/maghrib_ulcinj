@@ -1,63 +1,52 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Hotel Maghrib Homepage", () => {
-  test("renders hero section with title", async ({ page }) => {
+test.describe("Homepage", () => {
+  test("loads with correct title and hero", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("h1")).toBeVisible();
+    await expect(page).toHaveTitle(/Hotel Maghrib \| 100% Halal Hotel in Ulcinj/);
+    await expect(page.locator("h1")).toContainText("MAGHRIB");
+    await expect(page.locator(".hero-headline")).toBeVisible();
   });
 
-  test("has working navigation links", async ({ page }) => {
+  test("contains Hotel structured data", async ({ page }) => {
     await page.goto("/");
-    const galleryLink = page.locator('a[href="/gallery"]');
-    await expect(galleryLink).toBeVisible();
+    const scripts = page.locator('script[type="application/ld+json"]');
+    await expect(scripts.first()).toBeAttached();
+    const count = await scripts.count();
+    expect(count).toBeGreaterThanOrEqual(3);
   });
 
-  test("can scroll to booking section", async ({ page }) => {
+  test("room tabs switch content", async ({ page }) => {
     await page.goto("/");
-    await page.locator("#booking-suite").scrollIntoViewIfNeeded();
-    await expect(page.locator("#booking-suite")).toBeVisible();
+    await page.locator("#suite-tab-1").click();
+    await expect(page.locator("#suite-panel h3")).toContainText("Junior Family Suite");
   });
 
-  test("displays metrics bar", async ({ page }) => {
+  test("reservation dialog opens from header", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("text=Google Rating")).toBeVisible();
-    await expect(page.locator("text=Halal Certified")).toBeVisible();
+    await page.locator(".header-reserve").click();
+    await expect(page.locator("dialog[open]")).toBeVisible();
+    await page.locator(".modal-close").click();
   });
 
-  test("shows room options", async ({ page }) => {
+  test("canonical points to the production domain", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("text=Deluxe Double Room with Sea View").first()).toBeVisible();
-  });
-
-  test("spa concierge has booking form", async ({ page }) => {
-    await page.goto("/");
-    await page.locator("text=Private Spa").first().scrollIntoViewIfNeeded();
-    await page.waitForTimeout(500);
-    await expect(page.locator("text=Reserve Your Private Session").or(page.locator("text=Private Spa"))).toBeVisible();
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://hotelmaghrib.me");
   });
 });
 
-test.describe("Gallery Page", () => {
-  test("renders gallery with images", async ({ page }) => {
-    await page.goto("/gallery");
-    await expect(page).toHaveTitle(/Photo Gallery/);
+test.describe("Navigation between pages", () => {
+  test("rooms index links to all four room detail pages", async ({ page }) => {
+    await page.goto("/rooms");
+    for (const slug of ["deluxe-double-room", "junior-family-suite", "premium-king-room", "superior-triple-room"]) {
+      await expect(page.locator(`a[href="/rooms/${slug}"]`).first()).toBeAttached();
+    }
   });
 
-  test("has category filters", async ({ page }) => {
-    await page.goto("/gallery");
-    await expect(page.locator("text=All Photos")).toBeVisible();
-    await expect(page.locator("text=Suites & Rooms")).toBeVisible();
-  });
-});
-
-test.describe("Halal Hotel Landing Page", () => {
-  test("renders with correct heading", async ({ page }) => {
-    await page.goto("/halal-hotel-ulcinj");
+  test("header navigates to the experience page", async ({ page }) => {
+    await page.goto("/rooms");
+    await page.locator('.desktop-nav a[href="/experience"]').click();
+    await expect(page).toHaveURL(/\/experience/);
     await expect(page.locator("h1")).toContainText("Halal");
-  });
-
-  test("has booking section", async ({ page }) => {
-    await page.goto("/halal-hotel-ulcinj");
-    await expect(page.locator("text=Book Your Halal Stay").or(page.locator("#booking"))).toBeVisible();
   });
 });

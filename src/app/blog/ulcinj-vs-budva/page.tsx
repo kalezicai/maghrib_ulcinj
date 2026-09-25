@@ -1,59 +1,65 @@
-import Link from "next/link";
+import type { Metadata } from "next";
+import { ArticleLayout } from "@/components/redesign/Blog";
+import { pageMetadata } from "@/lib/page-metadata";
+import { SiteFooter, SiteHeader } from "@/components/redesign/Chrome";
+import { breadcrumbLd, blogPostingLd } from "@/data/redesign/schema";
+import { getPost } from "@/data/redesign/blog";
+import { notFound } from "next/navigation";
 
-export const metadata = {
-  title: "Ulcinj vs Budva: Best for Halal Travelers? | Blog",
-  description: "Compare Montenegro's top coastal towns for halal-conscious travelers. From halal dining and accommodation to beaches and family activities.",
-  alternates: { canonical: "https://hotelmaghrib.me/blog/ulcinj-vs-budva" },
-  openGraph: {
-    title: "Ulcinj vs Budva: Which Montenegrin Resort Is Best for Halal Travelers?",
-    description: "We compare Montenegro's two most popular coastal towns for halal-conscious travelers.",
-    url: "https://hotelmaghrib.me/blog/ulcinj-vs-budva",
-    siteName: "Hotel Maghrib Ulcinj",
-    images: [{ url: "/images/gallery/hotel-maghrib-gallery-02.webp", width: 1200, height: 630 }],
-    type: "article",
-  },
-};
+const post = getPost("ulcinj-vs-budva");
+
+export const metadata: Metadata = pageMetadata("/blog/ulcinj-vs-budva");
 
 export default function UlcinjVsBudvaPost() {
+  if (!post) notFound();
   return (
-    <article className="min-h-screen bg-[#FAF9F6] text-stone-800">
-      <div className="max-w-2xl mx-auto px-6 py-12">
-        <Link href="/blog" className="text-[10px] uppercase tracking-[0.2em] text-[#C5A880] font-semibold hover:underline">&larr; Back to Blog</Link>
-        <header className="mt-8 mb-10">
-          <h1 className="font-serif text-3xl md:text-4xl leading-tight mb-4">Ulcinj vs Budva: Which Montenegrin Resort Is Best for Halal Travelers?</h1>
-          <time className="text-xs text-stone-400 uppercase tracking-wider">June 5, 2026</time>
-        </header>
-        <div className="prose prose-stone prose-sm max-w-none space-y-5 text-stone-600 leading-relaxed">
-          <p>Montenegro&rsquo;s Adriatic coast offers two main resort towns that attract the most visitors: Budva, the bustling party capital, and Ulcinj, the serene southern gem with deep Ottoman roots. For halal-conscious travelers, the choice between them is clear — but let&rsquo;s examine both objectively.</p>
+    <>
+      <SiteHeader active="/blog/ulcinj-vs-budva" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingLd({
+        title: post.title,
+        description: post.excerpt,
+        date: post.date,
+        modified: post.updated,
+        path: `/blog/${post.slug}`,
+        image: `/images/gallery/hotel-maghrib-gallery-${String(post.image).padStart(2, "0")}.webp`,
+        authorName: "Hotel Maghrib Ulcinj",
+      })) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbLd([
+              { name: "Home", path: "/" },
+              { name: "Journal", path: "/blog" },
+              { name: post.title, path: `/blog/${post.slug}` },
+            ]),
+          ),
+        }}
+      />
+      <ArticleLayout post={post}>
+        <div className="article-body">
+          <p className="article-lede body-copy">We run a halal hotel in Ulcinj, so you could forgive us a bias — but only because our guests run this exact comparison every summer and tell us the results. Here is Ulcinj vs Budva, honestly, for Muslim families.</p>
 
-          <h2 className="font-serif text-xl text-stone-900 mt-8 mb-3">Halal Dining</h2>
-          <p><strong>Ulcinj:</strong> With a large Muslim population, Ulcinj has numerous halal restaurants, butcher shops, and supermarkets. Many restaurants are family-run and explicitly halal-certified. You&rsquo;ll find everything from traditional Balkan ćevapi to fresh seafood, all prepared according to Islamic dietary guidelines.</p>
-          <p><strong>Budva:</strong> While Budva has some international restaurants, halal options are limited and often not clearly labeled. You&rsquo;ll need to ask specifically, and many restaurants serve alcohol alongside food, which can be uncomfortable for some families.</p>
-          <p><strong>Winner: Ulcinj</strong></p>
+          <h2>The short answer</h2>
+          <p>Choose Budva for the famous coastal promenade-and-nightlife scene. Choose Ulcinj for space, sand, conservative comfort, halal living and gentler prices — which, for most halal-conscious families, is the whole point of the holiday.</p>
 
-          <h2 className="font-serif text-xl text-stone-900 mt-8 mb-3">Halal Accommodation</h2>
-          <p><strong>Ulcinj:</strong> Hotel Maghrib offers Montenegro&rsquo;s only fully halal-certified hotel experience with alcohol-free premises, private family spa booking, and an onsite Masjid. Other hotels in Ulcinj are generally more family-oriented and understanding of conservative needs.</p>
-          <p><strong>Budva:</strong> Most hotels in Budva cater to the party crowd. Finding accommodations with halal breakfast, prayer facilities, or family-oriented privacy is significantly more challenging and expensive.</p>
-          <p><strong>Winner: Ulcinj</strong></p>
+          <h2>Beaches</h2>
+          <p>Budva&rsquo;s beaches are small, pebbly and crowded at the waterline. Ulcinj has Mala Plaža (sandy, 14 minutes from our door), plus Velika Plaža — 12 kilometres of open sand — and Ada Bojana at the far south. For families with small children, sandy shallows beat pebbles every time.</p>
 
-          <h2 className="font-serif text-xl text-stone-900 mt-8 mb-3">Beaches</h2>
-          <p><strong>Ulcinj:</strong> Home to Ladies&rsquo; Beach (women-only), the stunning Long Beach (12 km of sand), and quiet coves like Valdanos. The beach culture is more conservative and family-friendly.</p>
-          <p><strong>Budva:</strong> Budva&rsquo;s beaches are lively, with beach clubs, loud music, and European-style sunbathing. While beautiful, they&rsquo;re less suitable for conservative families seeking modesty.</p>
-          <p><strong>Winner: Ulcinj</strong></p>
+          <h2>Halal dining and prayer</h2>
+          <p>Ulcinj is one of the Balkans&rsquo; most historically Muslim towns: halal-friendly grills and burek bakeries across town, minarets over the Old Town, and a resident Muslim community that keeps the town&rsquo;s rhythm comfortable. Budva&rsquo;s halal options are seasonal and thinner, with less of a resident Muslim culture.</p>
 
-          <h2 className="font-serif text-xl text-stone-900 mt-8 mb-3">Culture & Atmosphere</h2>
-          <p><strong>Ulcinj:</strong> The Old Town has a distinctly Ottoman feel, with a historic mosque, narrow streets, and a relaxed pace. The town feels safe, welcoming, and authentically Mediterranean without the party scene.</p>
-          <p><strong>Budva:</strong> Budva&rsquo;s Old Town is beautiful but overwhelmingly touristy, with nightclubs, bars, and crowded streets. It&rsquo;s a great destination for nightlife but less suitable for families seeking a peaceful halal-friendly holiday.</p>
-          <p><strong>Winner: Ulcinj</strong></p>
+          <h2>Accommodation</h2>
+          <p>Budva has more big-brand hotels; Ulcinj has more family-run houses — which is where halal-specialist properties live. Hotel Maghrib is the region&rsquo;s flagship 100% halal hotel: certified kitchen, alcohol-free premises, onsite Masjid, Qibla markers, private spa bookings, and rooms from €169.</p>
 
-          <h2 className="font-serif text-xl text-stone-900 mt-8 mb-3">The Verdict</h2>
-          <p>For halal-conscious travelers, families, and those seeking a peaceful, culturally comfortable vacation, Ulcinj is the clear winner. Its halal infrastructure, family-friendly beaches, and respectful atmosphere make it Montenegro&rsquo;s premier destination for Muslim travelers.</p>
-          <p>Budva has its charms, but it&rsquo;s best suited for those who don&rsquo;t require halal dining or a conservative environment. For a truly halal-friendly Montenegrin holiday, Ulcinj — and Hotel Maghrib — is the answer.</p>
+          <h2>Vibe</h2>
+          <p>Budva: promenade, marina, nightlife. Ulcinj: pines, sunsets, and a pace where the day&rsquo;s biggest decision is which beach. For a Muslim family week, the second list tends to win — and guest review after guest review says exactly that.</p>
+
+          <h2>Verdict</h2>
+          <p>Both are beautiful; they serve different holidays. For halal-conscious families, Ulcinj wins on every axis that matters: food certainty, prayer infrastructure, family privacy and price. Book June or September for the best weather-to-value balance — and check our <a href="/ramadan">Ramadan guide</a> for a completely different kind of Adriatic week.</p>
         </div>
-        <div className="mt-12 pt-8 border-t border-stone-200">
-          <Link href="/" className="inline-block bg-stone-900 hover:bg-[#C5A880] text-[#FAF9F6] hover:text-stone-950 font-semibold text-xs tracking-[0.15em] uppercase py-3 px-6 rounded-full transition-all">Book Ulcinj Stay</Link>
-        </div>
-      </div>
-    </article>
+      </ArticleLayout>
+      <SiteFooter />
+    </>
   );
 }

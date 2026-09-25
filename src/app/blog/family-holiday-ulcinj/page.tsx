@@ -1,62 +1,89 @@
-import Link from "next/link";
+import type { Metadata } from "next";
+import { ArticleLayout } from "@/components/redesign/Blog";
+import CenteredFaqs from "@/components/redesign/CenteredFaqs";
+import { pageMetadata } from "@/lib/page-metadata";
+import { SiteFooter, SiteHeader } from "@/components/redesign/Chrome";
+import { breadcrumbLd, blogPostingLd, faqLd } from "@/data/redesign/schema";
+import { getPost } from "@/data/redesign/blog";
+import { notFound } from "next/navigation";
 
-export const metadata = {
-  title: "The Ultimate Halal Family Holiday in Ulcinj, Montenegro | Blog",
-  description: "Plan the perfect halal family vacation in Ulcinj, Montenegro. Family-friendly beaches, halal dining, private spa hotels, and activities for kids.",
-  alternates: { canonical: "https://hotelmaghrib.me/blog/family-holiday-ulcinj" },
-  openGraph: {
-    title: "The Ultimate Halal Family Holiday in Ulcinj, Montenegro",
-    description: "Planning a halal family vacation? Ulcinj offers stunning beaches, rich culture, and family-friendly halal accommodation.",
-    url: "https://hotelmaghrib.me/blog/family-holiday-ulcinj",
-    siteName: "Hotel Maghrib Ulcinj",
-    images: [{ url: "/images/gallery/hotel-maghrib-gallery-10.webp", width: 1200, height: 630 }],
-    type: "article",
+const post = getPost("family-holiday-ulcinj");
+
+export const metadata: Metadata = pageMetadata("/blog/family-holiday-ulcinj");
+
+const faqs = [
+  {
+    question: "Is Ulcinj good for a family holiday?",
+    answer:
+      "Yes — Ulcinj is Montenegro's most family-oriented beach town: shallow sandy beaches at Mala Plaža and Velika Plaža, a relaxed pace, and family-sized hotel rooms at gentler prices than Budva or Kotor. Hotel Maghrib adds private family spa hours and an onsite Masjid to the mix.",
   },
-};
+  {
+    question: "What is the best month for a family holiday in Ulcinj?",
+    answer:
+      "July and August are warmest, but June and September are the sweet spot: sea warm enough for children, beaches quieter, and rates noticeably softer. Ramadan is also a uniquely peaceful time to visit.",
+  },
+  {
+    question: "Are there halal restaurants in Ulcinj?",
+    answer:
+      "Yes. Ulcinj has many traditional halal-friendly grills and burek bakeries, plus the hotel's own 100% halal breakfast buffet. For dinners, our hosts point families to quiet, family-appropriate venues in the Old Town.",
+  },
+];
 
 export default function FamilyHolidayPost() {
+  if (!post) notFound();
   return (
-    <article className="min-h-screen bg-[#FAF9F6] text-stone-800">
-      <div className="max-w-2xl mx-auto px-6 py-12">
-        <Link href="/blog" className="text-[10px] uppercase tracking-[0.2em] text-[#C5A880] font-semibold hover:underline">&larr; Back to Blog</Link>
-        <header className="mt-8 mb-10">
-          <h1 className="font-serif text-3xl md:text-4xl leading-tight mb-4">The Ultimate Halal Family Holiday in Ulcinj, Montenegro</h1>
-          <time className="text-xs text-stone-400 uppercase tracking-wider">June 10, 2026</time>
-        </header>
-        <div className="prose prose-stone prose-sm max-w-none space-y-5 text-stone-600 leading-relaxed">
-          <p>Finding a family holiday destination that respects Islamic values while offering genuine fun for children and relaxation for parents is no small task. Ulcinj, Montenegro&rsquo;s southernmost coastal town, ticks every box.</p>
+    <>
+      <SiteHeader active="/blog" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingLd({
+        title: post.title,
+        description: post.excerpt,
+        date: post.date,
+        modified: post.updated,
+        path: `/blog/${post.slug}`,
+        image: `/images/gallery/hotel-maghrib-gallery-${String(post.image).padStart(2, "0")}.webp`,
+        authorName: "Hotel Maghrib Ulcinj",
+      })) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd(faqs)) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbLd([
+              { name: "Home", path: "/" },
+              { name: "Journal", path: "/blog" },
+              { name: post.title, path: `/blog/${post.slug}` },
+            ]),
+          ),
+        }}
+      />
+      <ArticleLayout post={post}>
+        <div className="article-body">
+          <p className="article-lede body-copy">The best halal family holiday in Montenegro is a simple equation: a quiet, private base a short walk from a sandy beach, prayer infrastructure that stops being a search, and food that stops being a question. Ulcinj passes all of it — here is a day-by-day guide from our front desk.</p>
 
-          <h2 className="font-serif text-xl text-stone-900 mt-8 mb-3">Why Ulcinj for a Halal Family Holiday?</h2>
-          <p>Ulcinj stands apart from other Mediterranean destinations. With a significant Muslim population and a proud Ottoman heritage, halal-conscious families feel immediately at home. The town is welcoming, safe, and accustomed to catering to conservative travelers.</p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li><strong>Ladies&rsquo; Beach (Ženska Plaza)</strong> — A beautiful sandy beach traditionally reserved for women, perfect for mothers and daughters to enjoy freely.</li>
-            <li><strong>Small Beach (Mala Plaza)</strong> — Family-friendly with shallow waters and gentle waves.</li>
-            <li><strong>Halal Dining Everywhere</strong> — Numerous restaurants serve halal meat, and the Old Town is filled with family-run eateries.</li>
-            <li><strong>The Pine Tree Promenade</strong> — A beautiful shaded walk along the coast, perfect for evening strolls with children.</li>
+          <h2>Day 1 — arrive, exhale</h2>
+          <p>Land at Podgorica (TGD, about a 75-minute transfer). Check in from 2 PM, unpack on the balcony, and let the kids discover the Borići pines beside the hotel. Sunset from the terrace is non-negotiable — it is, after all, the maghrib.</p>
+
+          <h2>Day 2 — Small Beach morning, Old Town evening</h2>
+          <p>Walk 14 minutes down to Mala Plaža (Small Beach): sand, shallows, and a 10-minute stroll to the fortress walls for dinner. Our hosts will point you to quiet, family-appropriate tables in the Old Town.</p>
+
+          <h2>Day 3 — the long beach</h2>
+          <p>Velika Plaža, south of town, is 12 kilometres of fine sand — ample for kite-surf watchers and sandcastle engineers alike. Return for the private spa hour if you reserved one, and end the day on the terrace.</p>
+
+          <h2>Day 4 — olive groves and river islands</h2>
+          <p>Drive 15 minutes to Valdanos, a pebble cove in an ancient olive grove, then on to Ada Bojana for its famous sunset fish plates. Ask reception about boat options on the Bojana river — the children never forget it.</p>
+
+          <h2>What to look for in a halal family hotel</h2>
+          <ul>
+            <li>Family rooms with real sleeping for four to five — not a double plus a rollaway.</li>
+            <li>Structured spa hours: women-and-children sessions, men-only hours, exclusive family booking.</li>
+            <li>An onsite prayer room and Qibla markers, so the five daily prayers fit the holiday rather than fight it.</li>
+            <li>Hidden-view balconies for sunbathing privacy.</li>
+            <li>A halal breakfast that is included, plentiful, and certified — not &lsquo;halal options on request&rsquo;.</li>
           </ul>
-
-          <h2 className="font-serif text-xl text-stone-900 mt-8 mb-3">Family-Friendly Accommodation: Hotel Maghrib</h2>
-          <p>Your choice of accommodation makes or breaks a family holiday. Hotel Maghrib offers:</p>
-          <p><strong>Spacious Family Suites.</strong> Our Junior Family Suite (55 m²) sleeps up to 5 guests with a king bed and three single beds, plus a private balcony with sea views. The suite&rsquo;s layout ensures parents have privacy while children have their own space.</p>
-          <p><strong>Private Pool Booking.</strong> Our indoor pool, sauna, and jacuzzi can be reserved exclusively for your family. No mixed swimming, no crowds — just quality family time in the water.</p>
-          <p><strong>Kids&rsquo; Pool Area.</strong> A dedicated children&rsquo;s wading pool with warm water and colorful lighting makes bath time fun for little ones.</p>
-          <p><strong>Halal Breakfast Buffet.</strong> Included in your stay, our breakfast features fresh pastries, traditional dishes, fresh fruits, and made-to-order omelets — all 100% halal.</p>
-          <p><strong>Free Private Parking.</strong> No need to worry about parking fees or street parking with children.</p>
-
-          <h2 className="font-serif text-xl text-stone-900 mt-8 mb-3">Family Activities in Ulcinj</h2>
-          <p>Beyond the hotel, Ulcinj offers plenty for families:</p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li><strong>Ulcinj Old Town</strong> — Explore the historic castle, narrow streets, and panoramic views.</li>
-            <li><strong>Ada Bojana</strong> — A river island with beautiful beaches and water sports.</li>
-            <li><strong>Valdanos Bay</strong> — A quiet olive-tree-lined bay perfect for peaceful family days.</li>
-            <li><strong>Sveti Nikola Island</strong> — Take a short boat trip to this uninhabited island with pristine beaches.</li>
-          </ul>
-          <p>With its unique blend of Islamic heritage, Mediterranean beauty, and family-friendly atmosphere, Ulcinj is the perfect destination for your next halal family holiday.</p>
         </div>
-        <div className="mt-12 pt-8 border-t border-stone-200">
-          <Link href="/" className="inline-block bg-stone-900 hover:bg-[#C5A880] text-[#FAF9F6] hover:text-stone-950 font-semibold text-xs tracking-[0.15em] uppercase py-3 px-6 rounded-full transition-all">Check Availability</Link>
-        </div>
-      </div>
-    </article>
+        <CenteredFaqs faqs={faqs} eyebrow="QUICK ANSWERS" title="Family questions, answered" />
+      </ArticleLayout>
+      <SiteFooter />
+    </>
   );
 }
