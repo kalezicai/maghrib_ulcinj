@@ -8,6 +8,7 @@ test.describe("SEO smoke across the multipage site", () => {
     { path: "/rooms/junior-family-suite", title: /Junior Family Suite/ },
     { path: "/rooms/premium-king-room", title: /Premium King Room with Sea View/ },
     { path: "/rooms/superior-triple-room", title: /Superior Triple Room with Sea View/ },
+    { path: "/hotel", title: /The Hotel \| Hotel Maghrib/ },
     { path: "/experience", title: /The 100% Halal Experience/ },
     { path: "/spa", title: /Private Family Spa & Wellness/ },
     { path: "/gallery", title: /Photo Gallery/ },
@@ -54,7 +55,7 @@ test.describe("SEO smoke across the multipage site", () => {
     const response = await request.get("/sitemap.xml");
     expect(response.ok()).toBeTruthy();
     const body = await response.text();
-    for (const path of ["/rooms", "/spa", "/experience", "/ulcinj", "/halal-hotel-ulcinj"]) {
+    for (const path of ["/rooms", "/spa", "/experience", "/ulcinj", "/halal-hotel-ulcinj", "/hotel"]) {
       expect(body).toContain(`https://hotelmaghrib.me${path}`);
     }
   });

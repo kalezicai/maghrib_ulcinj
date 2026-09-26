@@ -55,6 +55,22 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ogImage: '/images/og/og-deluxe-double-room.webp',
     schema: ['Hotel', 'FAQPage', 'BreadcrumbList'],
   },
+  '/hotel': {
+    path: '/hotel',
+    title: 'The Hotel | Hotel Maghrib — Family-Run 100% Halal Hotel in Ulcinj',
+    description:
+      'Inside Ulcinj’s family-run 100% halal hotel: 16 sea-view rooms, private-bookable spa, onsite Masjid, halal-certified kitchen and an alcohol-free house above the Adriatic.',
+    keywords: [
+      'hotel maghrib ulcinj',
+      '100% halal hotel montenegro',
+      'family run hotel ulcinj',
+      'boutique hotel ulcinj',
+      'alcohol free hotel adriatic',
+      'muslim family hotel montenegro',
+    ],
+    ogImage: '/images/og/og-home.webp',
+    schema: ['Hotel', 'FAQPage', 'BreadcrumbList'],
+  },
   '/halal-hotel-ulcinj': {
     path: '/halal-hotel-ulcinj',
     title: 'Halal Hotel Ulcinj | 100% Halal Stay at Hotel Maghrib',

@@ -39,13 +39,15 @@ const overlayLabels: Record<Exclude<Overlay, null>["type"], string> = {
   reviews: "Guest stories", ramadan: "Ramadan at Maghrib", terms: "Reservation information",
 };
 
+// The header navigates to dedicated pages (SEO multipage structure).
+// Section anchors stay on the page for the scroll cue and footer links.
 const sectionNav = [
-  { label: "The Hotel", href: "#the-hotel" },
-  { label: "Rooms & Suites", href: "#suites" },
-  { label: "The Experience", href: "#experience" },
-  { label: "Private Spa", href: "#spa" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Ulcinj", href: "#ulcinj" },
+  { label: "The Hotel", href: "/hotel" },
+  { label: "Rooms & Suites", href: "/rooms" },
+  { label: "The Experience", href: "/experience" },
+  { label: "Private Spa", href: "/spa" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Ulcinj", href: "/ulcinj" },
 ];
 
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -256,11 +258,7 @@ export default function HomeSections() {
     const onScroll = () => setScrolled(window.scrollY > 30);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { if (entry.isIntersecting) setActiveSection(`#${entry.target.id}`); });
-    }, { rootMargin: "-15% 0px -55% 0px", threshold: 0 });
-    sectionNav.forEach((item) => { const section = document.querySelector(item.href); if (section) observer.observe(section); });
-    return () => { window.removeEventListener("scroll", onScroll); observer.disconnect(); };
+    return () => { window.removeEventListener("scroll", onScroll); };
   }, []);
 
   function closeOverlay() {
@@ -283,7 +281,7 @@ export default function HomeSections() {
           <Brand onNavigate={closeOverlay} />
           <nav className="desktop-nav" aria-label="Main navigation">
             {sectionNav.map((item) => (
-              <a key={item.href} className={activeSection === item.href && scrolled ? "is-active" : ""} href={item.href}>{item.label}</a>
+              <Link key={item.href} href={item.href}>{item.label}</Link>
             ))}
           </nav>
           <div className="header-actions">
@@ -306,7 +304,7 @@ export default function HomeSections() {
             <h2>A slower pace.<br />A deeper sense<br /><em>of belonging.</em></h2>
             <p className="body-copy drop-cap">High on the pine-scented hills of Ulcinj, overlooking the endless Adriatic, there is a place where your comfort and your values feel equally at home.</p>
             <p className="body-copy">Welcome to Hotel Maghrib. A family sanctuary shaped by warm hospitality, thoughtful halal living, and the simple luxury of feeling completely at ease.</p>
-            <button className="text-link" onClick={() => setOverlay({ type: "story" })}>Discover our story <ArrowUpRight size={17} strokeWidth={1.5} /></button>
+            <Link className="text-link" href="/story">Discover our story <ArrowUpRight size={17} strokeWidth={1.5} /></Link>
             <div className="story-signature">
               <Monogram />
               <span>THOUGHTFULLY HOSTED.<br />NATURALLY SERENE.</span>

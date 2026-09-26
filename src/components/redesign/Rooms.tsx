@@ -9,7 +9,7 @@
 import { useState } from "react";
 import SmartImage from "./SmartImage";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Star } from "lucide-react";
 import Brand, { BrandDefs, Eyebrow, Khatim, Monogram, Seal } from "./Brand";
 import CenteredFaqs from "./CenteredFaqs";
 import Modal from "./BookingModal";
@@ -122,6 +122,23 @@ export function RoomsIndex({ heroPhotoNumber }: { heroPhotoNumber?: number }) {
               </div>
             </article>
           ))}
+          <Reveal className="amenities-heading rooms-index-amenities">
+            <Eyebrow number="05">INCLUDED WITH EVERY ROOM</Eyebrow>
+            <h2>No small print.<br /><em>Just the standard.</em></h2>
+          </Reveal>
+          <ul className="amenities-grid rooms-index-amenities-grid">
+            {roomAmenities.map((amenity) => (
+              <li key={amenity}><Check size={15} strokeWidth={1.5} />{amenity}</li>
+            ))}
+          </ul>
+          <div className="rooms-compare page-width">
+            <Reveal className="getting-card rooms-compare-card">
+              <Star size={16} strokeWidth={1.4} />
+              <h3>Choosing between them?</h3>
+              <p className="body-copy">Couples: the <Link href="/rooms/deluxe-double-room">Deluxe Double</Link> (intimate, 38 m²) or the <Link href="/rooms/premium-king-room">Premium King</Link> (extra space, 42 m²). Families of 4–5: the <Link href="/rooms/junior-family-suite">Junior Family Suite</Link> (55 m²). Groups of three: the <Link href="/rooms/superior-triple-room">Superior Triple</Link> (48 m²). All four look west over the Adriatic.</p>
+              <Link className="text-link" href="/contact">Ask our team to match you <ArrowRight size={15} /></Link>
+            </Reveal>
+          </div>
           <p className="suite-footnote"><Khatim />Every room. A private balcony. An uninterrupted sea view.<Khatim /></p>
         </section>
 

@@ -1114,3 +1114,35 @@ h2 em { color: #767c6c; }
   .booking-main { padding: 52px 24px 30px; }
   .gallery-lightbox-stage { height: 56svh; }
 }
+
+/* --- /hotel facilities + included strip + rooms index extras --------- */
+.facilities-section { display: flex; flex-direction: column; gap: 44px; }
+.facilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.facility-card { display: flex; flex-direction: column; gap: 12px; border: 1px solid var(--line); background: var(--ivory); padding: 30px 26px 26px; height: 100%; transition: border-color 0.3s, transform 0.3s; }
+a.facility-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+.facility-card > svg { color: var(--gold); }
+.facility-card h3 { font-family: var(--font-sans); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+.facility-card .body-copy { font-size: 13px; line-height: 1.9; }
+.facility-link { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); }
+.facility-link svg { transition: transform 0.3s; }
+a.facility-card:hover .facility-link svg { transform: translate(3px, -3px); }
+.included-strip { padding-block: clamp(40px, 4vw, 64px); }
+.included-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px 40px; border-block: 1px solid var(--line); padding-block: 28px; }
+.included-grid > div { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; line-height: 1.7; color: #5d6754; }
+.included-grid svg { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.rooms-index-amenities { margin-top: clamp(70px, 7vw, 110px); }
+.rooms-index-amenities-grid { margin-top: 34px; }
+.rooms-compare { padding-top: 40px; max-width: 1360px; }
+.rooms-compare-card { max-width: 720px; gap: 14px; }
+.rooms-compare-card h3 { font-family: var(--font-sans); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+.rooms-compare-card .body-copy { font-size: 14px; }
+.rooms-compare-card a { color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 1000px) {
+  .facilities-grid { grid-template-columns: 1fr 1fr; }
+  .included-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .facilities-grid { grid-template-columns: 1fr; }
+  .included-grid { grid-template-columns: 1fr; gap: 12px; }
+}

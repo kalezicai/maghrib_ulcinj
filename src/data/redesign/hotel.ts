@@ -269,8 +269,8 @@ export const galleryPhotos: GalleryPhoto[] = Array.from({ length: 58 }, (_, inde
 
 /** Navigation entries for the shared header/footer across all pages. */
 export const pageNav = [
-  { label: 'The Hotel', href: '/#the-hotel' },
-  { label: 'Rooms & Suites', href: '/#suites' },
+  { label: 'The Hotel', href: '/hotel' },
+  { label: 'Rooms & Suites', href: '/rooms' },
   { label: 'The Experience', href: '/experience' },
   { label: 'Private Spa', href: '/spa' },
   { label: 'Gallery', href: '/gallery' },
