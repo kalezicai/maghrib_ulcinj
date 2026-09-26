@@ -8,23 +8,13 @@ import type { ReactNode } from 'react';
 
 export function Monogram({ className = '' }: { className?: string }) {
   return (
-    <svg className={`monogram ${className}`} viewBox="0 0 56 62" fill="none" aria-hidden="true">
-      <path
-        d="M4 60V26C4 13.8 14.7 2 28 2s24 11.8 24 24v34"
-        stroke="currentColor"
-        strokeWidth="1.15"
-        className="monogram-arch"
-      />
-      <circle cx="28" cy="33" r="9.5" stroke="currentColor" strokeWidth="1.15" className="monogram-sun" />
-      <path d="M13 42h30M17 48h22M22 54h12" stroke="currentColor" strokeWidth="1.15" strokeLinecap="round" />
-      <path
-        d="M28 14v5M16.2 18.8l2.7 3.3M39.8 18.8l-2.7 3.3M9 30.5h4M43 30.5h4"
-        stroke="currentColor"
-        strokeWidth="1.15"
-        strokeLinecap="round"
-        className="monogram-rays"
-      />
-    </svg>
+    // The official Hotel Maghrib shield, extracted from the original brand image.
+    <img
+      src="/images/hotel-maghrib-logo.png"
+      alt="Hotel Maghrib logo"
+      className={`monogram ${className}`}
+      draggable={false}
+    />
   );
 }
 
