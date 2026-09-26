@@ -45,8 +45,10 @@ test.describe("Navigation between pages", () => {
 
   test("header navigates to the experience page", async ({ page }) => {
     await page.goto("/rooms");
-    await page.locator('.desktop-nav a[href="/experience"]').click();
-    await expect(page).toHaveURL(/\/experience/);
+    await Promise.all([
+      page.waitForURL("**/experience"),
+      page.locator('.desktop-nav a[href="/experience"]').click(),
+    ]);
     await expect(page.locator("h1")).toContainText("Halal");
   });
 });

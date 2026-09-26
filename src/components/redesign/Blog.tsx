@@ -4,7 +4,7 @@
  * /blog — halal travel journal hub + article layouts, in the Redesign style.
  */
 
-import Image from "next/image";
+import SmartImage from "./SmartImage";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Calendar } from "lucide-react";
 import Brand, { BrandDefs, Eyebrow, Khatim, Monogram, Rule } from "./Brand";
@@ -39,7 +39,7 @@ export function BlogIndex() {
             <Reveal key={post.slug}>
               <Link className={`blog-row ${index % 2 === 1 ? "is-flipped" : ""}`} href={`/blog/${post.slug}`}>
                 <div className="blog-row-photo">
-                  <Image src={photo(post.image)} alt={`${post.title} — ${post.excerpt.slice(0, 90)}`} width={960} height={720} priority={index === 0} loading={index === 0 ? undefined : "lazy"} sizes="(max-width: 900px) 100vw, 46vw" />
+                  <SmartImage src={photo(post.image)} alt={`${post.title} — ${post.excerpt.slice(0, 90)}`} width={960} height={720} priority={index === 0} loading={index === 0 ? undefined : "lazy"} sizes="(max-width: 900px) 100vw, 46vw" />
                 </div>
                 <div className="blog-row-copy">
                   <p className="eyebrow"><Khatim className="eyebrow-star" />{DATE_FMT(post.date)}</p>
@@ -77,7 +77,7 @@ export function ArticleLayout({ post, children }: { post: (typeof blogPosts)[num
         <p className="article-meta"><Calendar size={13} /> Updated <strong>{DATE_FMT(post.updated ?? post.date)}</strong> &nbsp;&#10022;&nbsp; By the Hotel Maghrib team in Ulcinj</p>
         <div className="arch-photo article-photo">
           <div className="arch-photo-crop">
-            <Image src={photo(post.image)} alt={post.heroAlt} width={1400} height={900} priority sizes="(max-width: 1200px) 94vw, 1100px" fetchPriority="high" />
+            <SmartImage src={photo(post.image)} alt={post.heroAlt} width={1400} height={900} priority sizes="(max-width: 1200px) 94vw, 1100px" fetchPriority="high" />
           </div>
           {post.heroCaption && <span className="arch-photo-caption"><Khatim />{post.heroCaption}</span>}
         </div>

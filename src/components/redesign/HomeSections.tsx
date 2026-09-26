@@ -68,7 +68,7 @@ function ArchPhoto({ src, alt, className = "", caption }: { src: string; alt: st
     <div className={`arch-photo ${className}`}>
       <ArchOutline className="arch-photo-frame" />
       <div className="arch-photo-crop">
-        <HotelImage src={src} alt={alt} loading="lazy" />
+        <HotelImage src={src} alt={alt} loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" />
       </div>
       {caption && <span className="arch-photo-caption"><Khatim />{caption}</span>}
     </div>
@@ -163,7 +163,7 @@ function Hero({ onBook, inactive, sunsetLabel }: { onBook: () => void; inactive:
     [10, 58].forEach((number) => {
       const image = new Image();
       image.fetchPriority = "low";
-      image.src = photo(number);
+      image.src = photo(number).replace(".webp", "-w1600.webp");
     });
   }, []);
 
@@ -199,7 +199,7 @@ function Hero({ onBook, inactive, sunsetLabel }: { onBook: () => void; inactive:
             exit={{ opacity: 0 }}
             transition={{ opacity: { duration: reducedMotion ? 0 : 1.2 }, scale: { duration: 11, ease: "linear" } }}
           >
-            <HotelImage src={slides[slide].src} alt={slides[slide].alt} fetchPriority={slide === 0 ? "high" : "auto"} style={{ objectPosition: slides[slide].position }} />
+            <HotelImage src={slides[slide].src} alt={slides[slide].alt} loading={slide === 0 ? "eager" : "lazy"} fetchPriority={slide === 0 ? "high" : "auto"} style={{ objectPosition: slides[slide].position }} sizes="100vw" />
           </motion.div>
         </AnimatePresence>
       </motion.div>
@@ -362,7 +362,7 @@ export default function HomeSections() {
                   <div className="suite-photo-crop">
                     <AnimatePresence mode="wait">
                       <motion.div key={suite.id} className="suite-preview-image" initial={{ opacity: reducedMotion ? 1 : 0, scale: reducedMotion ? 1 : 1.05 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: reducedMotion ? 1 : 0 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
-                        <HotelImage src={photo(suite.image)} alt={`${suite.name} with private sea-view balcony at Hotel Maghrib`} loading="lazy" />
+                        <HotelImage src={photo(suite.image)} alt={`${suite.name} with private sea-view balcony at Hotel Maghrib`} loading="lazy" sizes="(max-width: 900px) 92vw, 46vw" />
                       </motion.div>
                     </AnimatePresence>
                   </div>
@@ -416,7 +416,7 @@ export default function HomeSections() {
             <div className="experience-frame">
               <AnimatePresence mode="wait">
                 <motion.div className="experience-photo" key={experience.image} initial={{ opacity: reducedMotion ? 1 : 0, scale: reducedMotion ? 1 : 1.04 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: reducedMotion ? 1 : 0 }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
-                  <HotelImage src={photo(experience.image)} alt={experience.alt} loading="lazy" />
+                  <HotelImage src={photo(experience.image)} alt={experience.alt} loading="lazy" sizes="(max-width: 900px) 92vw, 46vw" />
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -484,7 +484,7 @@ export default function HomeSections() {
                 <Reveal key={item.image} className={`gallery-preview-item gallery-preview-item--${index}`} delay={index * 0.1}>
                   <Link href={`/gallery?photo=${item.image}`} aria-label={`View ${item.title} in the hotel gallery`}>
                     <div className="gallery-preview-photo">
-                      <HotelImage src={photo(item.image)} alt={`${item.title} at the halal Hotel Maghrib in Ulcinj, Montenegro`} loading="lazy" />
+                      <HotelImage src={photo(item.image)} alt={`${item.title} at the halal Hotel Maghrib in Ulcinj, Montenegro`} loading="lazy" sizes="(max-width: 900px) 92vw, 30vw" />
                       <span className="photo-explore"><ArrowUpRight size={20} strokeWidth={1.3} /></span>
                     </div>
                     <span className="gallery-preview-category">{item.category}</span>

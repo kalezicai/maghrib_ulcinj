@@ -6,7 +6,7 @@
  */
 
 import { useState } from "react";
-import Image from "next/image";
+import SmartImage from "./SmartImage";
 import { ArrowUpRight, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Brand, { BrandDefs, Eyebrow, Khatim, Monogram } from "./Brand";
@@ -35,7 +35,7 @@ export default function GalleryPageBrowser({ initialPhotoId }: { initialPhotoId?
           <span>{String(selectedIndex + 1).padStart(2, "0")} / {String(filtered.length).padStart(2, "0")}</span>
         </div>
         <div className="gallery-lightbox-stage">
-          <Image key={selected.id} src={selected.src} alt={selected.alt} width={1600} height={1100} style={{ objectFit: "contain" }} sizes="100vw" />
+          <SmartImage key={selected.id} src={selected.src} alt={selected.alt} width={1600} height={1100} style={{ objectFit: "contain" }} sizes="100vw" />
           <button className="lightbox-arrow lightbox-arrow--previous" onClick={() => advance(-1)} aria-label="Previous photograph"><ChevronLeft size={22} /></button>
           <button className="lightbox-arrow lightbox-arrow--next" onClick={() => advance(1)} aria-label="Next photograph"><ChevronRight size={22} /></button>
         </div>
@@ -76,7 +76,7 @@ export default function GalleryPageBrowser({ initialPhotoId }: { initialPhotoId?
             {filtered.map((image) => (
               <button className="gallery-tile" key={image.id} onClick={() => setSelectedId(image.id)} aria-label={`View ${image.title}`}>
                 <div className="gallery-tile-image gallery-tile-image--page">
-                  <Image src={image.src} alt={image.alt} width={640} height={480} loading="lazy" sizes="(max-width: 900px) 50vw, 30vw" />
+                  <SmartImage src={image.src} alt={image.alt} width={640} height={480} loading="lazy" sizes="(max-width: 900px) 50vw, 30vw" />
                   <span className="gallery-zoom"><ArrowUpRight size={22} /></span>
                 </div>
                 <span>{image.title}<ArrowRight size={16} /></span>

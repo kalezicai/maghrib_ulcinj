@@ -8,7 +8,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import Image from "next/image";
+import SmartImage from "./SmartImage";
 import { ArrowRight, ArrowUpRight, Clock, Utensils, Moon, Star, Waves, Sun, type LucideIcon } from "lucide-react";
 import Brand, { BrandDefs, Eyebrow, Khatim, Monogram, Rule, Seal } from "./Brand";
 import CenteredFaqs from "./CenteredFaqs";
@@ -38,7 +38,7 @@ export default function ExperiencePage() {
 
         <section className="interior-hero">
           <div className="interior-hero-media">
-            <Image src={photo(50)} alt="The 100% halal-certified breakfast buffet at Hotel Maghrib, Ulcinj, Montenegro" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
+            <SmartImage src={photo(50)} alt="The 100% halal-certified breakfast buffet at Hotel Maghrib, Ulcinj, Montenegro" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
           </div>
           <div className="interior-hero-shade" />
           <div className="page-width interior-hero-inner">
@@ -77,7 +77,7 @@ export default function ExperiencePage() {
             { image: 10, alt: "The open-air sea-view terrace of Hotel Maghrib at golden hour" },
           ].map((item, index) => (
             <Reveal key={item.image} className={`band-photo band-photo--${index}`}>
-              <Image src={photo(item.image)} alt={item.alt} width={700} height={900} loading="lazy" sizes="(max-width: 900px) 92vw, 30vw" />
+              <SmartImage src={photo(item.image)} alt={item.alt} width={700} height={900} loading="lazy" sizes="(max-width: 900px) 92vw, 30vw" />
             </Reveal>
           ))}
         </section>

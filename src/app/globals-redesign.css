@@ -123,9 +123,9 @@ h2 em { color: #767c6c; }
 .site-header.is-scrolled { box-shadow: 0 1px 0 var(--line), 0 6px 26px #1d29220a; }
 .header-inner { height: 100%; padding-inline: var(--page-gutter); max-width: 1640px; margin: auto; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
 .scroll-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, var(--rust), var(--gold)); transform-origin: left; }
-.brand { display: inline-flex; align-items: center; gap: 14px; flex-shrink: 0; width: fit-content; }
-.brand-symbol { width: 40px; height: 45px; transition: color 0.4s; }
-.brand:hover .brand-symbol { color: var(--rust); }
+.brand { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; width: fit-content; }
+.brand-symbol { width: 58px; height: 66px; margin-block: -8px; transition: transform 0.4s; }
+.brand:hover .brand-symbol { transform: translateY(-2px); }
 .brand-type { display: flex; flex-direction: column; }
 .brand-name { font-family: var(--font-display, var(--font-serif)); font-size: 27px; line-height: 1; letter-spacing: 0.18em; text-indent: 0.3em; color: var(--ink); font-weight: 600; }
 .brand-location { display: flex; align-items: center; gap: 7px; font-size: 7px; letter-spacing: 0.22em; color: var(--bronze); margin-top: 8px; }
@@ -370,7 +370,7 @@ h2 em { color: #767c6c; }
 .footer-main { position: relative; display: grid; grid-template-columns: 1.15fr 1.15fr 0.85fr 0.95fr; gap: 45px; padding-bottom: 66px; }
 .footer-main .brand-name { color: #f3f1e5; }
 .footer-main .brand-location { color: var(--gold); }
-.brand--footer .brand-symbol { width: 42px; height: 47px; }
+.brand--footer .brand-symbol { width: 52px; height: 59px; }
 .footer-arabic { font-family: var(--font-arabic); font-size: 26px; color: var(--gold); margin-top: 24px; }
 .footer-brand > p:last-child { font-size: 11px; color: #9ba694; line-height: 2; margin-top: 12px; }
 .footer-main .eyebrow { font-size: 8px; letter-spacing: 0.18em; color: var(--gold); margin-bottom: 24px; }
@@ -575,7 +575,7 @@ h2 em { color: #767c6c; }
 @media (max-width: 1240px) {
   :root { --page-gutter: 44px; }
   .header-inner { gap: 18px; }
-  .brand-symbol { width: 34px; height: 38px; }
+  .brand-symbol { width: 48px; height: 55px; margin-block: -6px; }
   .brand-name { font-size: 23px; letter-spacing: 0.26em; text-indent: 0.26em; }
   .brand { gap: 10px; }
   .desktop-nav { gap: 19px; margin-left: 0; }
@@ -603,7 +603,7 @@ h2 em { color: #767c6c; }
   .mobile-menu-button { display: inline-flex; border: 0; border-radius: 0; width: 32px; height: 40px; }
   .mobile-menu-button:hover { background: none; color: var(--rust); }
   .header-reserve { font-size: 9px; padding: 14px 20px; }
-  .brand-symbol { width: 38px; height: 43px; }
+  .brand-symbol { width: 52px; height: 59px; margin-block: -6px; }
   .brand-name { font-size: 25px; }
   .hero { height: calc(100svh - 86px); min-height: 700px; }
   .hero h1 { font-size: 100px; }
@@ -657,7 +657,7 @@ h2 em { color: #767c6c; }
   .section-number::after { margin-inline: 7px 1px; }
   .site-header { height: 78px; }
   .header-inner { gap: 14px; }
-  .brand-symbol { width: 33px; height: 37px; }
+  .brand-symbol { width: 46px; height: 52px; margin-block: -6px; }
   .brand { gap: 9px; }
   .brand-name { font-size: 21px; letter-spacing: 0.24em; text-indent: 0.24em; }
   .brand-location { font-size: 6px; margin-top: 7px; gap: 5px; }
@@ -810,7 +810,7 @@ h2 em { color: #767c6c; }
   :root { --page-gutter: 19px; }
   .header-inner { gap: 8px; }
   .header-actions { gap: 9px; }
-  .brand-symbol { width: 28px; height: 32px; }
+  .brand-symbol { width: 40px; height: 46px; margin-block: -5px; }
   .brand-name { font-size: 18px; }
   .brand-location { font-size: 5px; }
   .header-reserve { font-size: 7px; gap: 6px; padding-inline: 10px; }

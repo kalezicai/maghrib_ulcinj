@@ -7,7 +7,7 @@
  */
 
 import { useState } from "react";
-import Image from "next/image";
+import SmartImage from "./SmartImage";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, Clock, Waves, Shield, Users } from "lucide-react";
 import Brand, { BrandDefs, Eyebrow, Khatim, Monogram, Rule } from "./Brand";
@@ -29,7 +29,7 @@ export default function SpaPage() {
 
         <section className="interior-hero">
           <div className="interior-hero-media">
-            <Image src={photo(55)} alt="The private indoor pool sanctuary at the family spa of Hotel Maghrib in Ulcinj, Montenegro" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
+            <SmartImage src={photo(55)} alt="The private indoor pool sanctuary at the family spa of Hotel Maghrib in Ulcinj, Montenegro" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
           </div>
           <div className="interior-hero-shade" />
           <div className="page-width interior-hero-inner">
@@ -72,7 +72,7 @@ export default function SpaPage() {
             { image: 18, alt: "The indoor swimming pool with children's wading area at Hotel Maghrib Ulcinj" },
           ].map((item, index) => (
             <Reveal key={item.image} className={`band-photo band-photo--${index}`}>
-              <Image src={photo(item.image)} alt={item.alt} width={700} height={900} loading="lazy" sizes="(max-width: 900px) 92vw, 30vw" />
+              <SmartImage src={photo(item.image)} alt={item.alt} width={700} height={900} loading="lazy" sizes="(max-width: 900px) 92vw, 30vw" />
             </Reveal>
           ))}
         </section>

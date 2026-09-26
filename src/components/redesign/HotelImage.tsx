@@ -1,16 +1,34 @@
-import { useState, type ImgHTMLAttributes } from 'react';
+"use client";
 
-type Props = ImgHTMLAttributes<HTMLImageElement>;
+/**
+ * Backwards-compatible wrapper around SmartImage (responsive srcset).
+ * Older call sites pass loading / fetchPriority / style directly.
+ */
 
-export default function HotelImage({ alt = '', onError, ...props }: Props) {
-  const [failed, setFailed] = useState(false);
-  if (failed) {
-    return (
-      <div className={`image-unavailable ${props.className ?? ''}`} role="img" aria-label={alt}>
-        <span>MAGHRIB</span>
-        <small>This photograph is temporarily unavailable.</small>
-      </div>
-    );
-  }
-  return <img {...props} alt={alt} onError={(event) => { setFailed(true); onError?.(event); }} />;
+import SmartImage from "./SmartImage";
+import type { CSSProperties } from "react";
+
+type Props = {
+  src: string;
+  alt?: string;
+  loading?: "lazy" | "eager";
+  fetchPriority?: "high" | "low" | "auto";
+  style?: CSSProperties;
+  sizes?: string;
+  className?: string;
+  onError?: () => void;
+};
+
+export default function HotelImage({ alt = "", ...props }: Props) {
+  return (
+    <SmartImage
+      src={props.src}
+      alt={alt}
+      priority={props.loading === "eager"}
+      fetchPriority={props.fetchPriority}
+      style={props.style}
+      sizes={props.sizes}
+      className={props.className}
+    />
+  );
 }

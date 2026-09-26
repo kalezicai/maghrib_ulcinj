@@ -5,7 +5,7 @@
  * AEO cluster: ramadan package ulcinj, iftar suhoor hotel montenegro.
  */
 
-import Image from "next/image";
+import SmartImage from "./SmartImage";
 import { ArrowRight, ArrowUpRight, Moon, Sun, Users, Clock, Utensils } from "lucide-react";
 import { useState } from "react";
 import Brand, { BrandDefs, Eyebrow, Khatim, Monogram, Rule } from "./Brand";
@@ -26,7 +26,7 @@ export default function RamadanPage() {
 
         <section className="interior-hero">
           <div className="interior-hero-media">
-            <Image src={photo(17)} alt="The Ramadan iftar table setting at Hotel Maghrib in Ulcinj, Montenegro" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
+            <SmartImage src={photo(17)} alt="The Ramadan iftar table setting at Hotel Maghrib in Ulcinj, Montenegro" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
           </div>
           <div className="interior-hero-shade" />
           <div className="page-width interior-hero-inner">

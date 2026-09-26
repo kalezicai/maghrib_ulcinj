@@ -8,7 +8,7 @@
  */
 
 import Link from "next/link";
-import Image from "next/image";
+import SmartImage from "./SmartImage";
 import { ArrowRight, ArrowUpRight, Check, Star } from "lucide-react";
 import { useState } from "react";
 import Brand, { BrandDefs, Eyebrow, Khatim, Monogram, Rule, Seal } from "./Brand";
@@ -74,7 +74,7 @@ export default function HalalHotelUlcinjPage() {
 
         <section className="interior-hero">
           <div className="interior-hero-media">
-            <Image src={photo(56)} alt="Hotel Maghrib — the 100% halal hotel in Ulcinj, Montenegro — above the Adriatic at golden hour" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
+            <SmartImage src={photo(56)} alt="Hotel Maghrib — the 100% halal hotel in Ulcinj, Montenegro — above the Adriatic at golden hour" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
           </div>
           <div className="interior-hero-shade" />
           <div className="page-width interior-hero-inner">
@@ -102,7 +102,7 @@ export default function HalalHotelUlcinjPage() {
           {suites.map((suite) => (
             <Reveal className="room-rate-row" key={suite.id}>
               <Link className="room-rate-photo" href={`/rooms/${suite.seoSlug}`}>
-                <Image src={photo(suite.image)} alt={`${suite.name} with sea-view balcony at Hotel Maghrib Ulcinj`} width={520} height={390} loading="lazy" sizes="220px" />
+                <SmartImage src={photo(suite.image)} alt={`${suite.name} with sea-view balcony at Hotel Maghrib Ulcinj`} width={520} height={390} loading="lazy" sizes="220px" />
               </Link>
               <div className="room-rate-copy">
                 <h3>{suite.name}</h3>

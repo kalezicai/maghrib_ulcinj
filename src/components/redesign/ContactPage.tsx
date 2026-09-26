@@ -6,7 +6,7 @@
  * details and WhatsApp/email paths for answer-engine extraction.
  */
 
-import Image from "next/image";
+import SmartImage from "./SmartImage";
 import { ArrowUpRight, MapPin, Phone, Mail, Clock, Check } from "lucide-react";
 import Brand, { BrandDefs, Eyebrow, Khatim, Monogram, Rule } from "./Brand";
 import Reveal from "./Reveal";
@@ -22,7 +22,7 @@ export default function ContactPage() {
 
         <section className="interior-hero">
           <div className="interior-hero-media">
-            <Image src={photo(9)} alt="The front desk of Hotel Maghrib welcoming guests, Ulcinj Montenegro" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
+            <SmartImage src={photo(9)} alt="The front desk of Hotel Maghrib welcoming guests, Ulcinj Montenegro" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
           </div>
           <div className="interior-hero-shade" />
           <div className="page-width interior-hero-inner">

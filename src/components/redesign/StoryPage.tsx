@@ -5,7 +5,7 @@
  * written in the first person, with entity facts for GEO.
  */
 
-import Image from "next/image";
+import SmartImage from "./SmartImage";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
 import { useState } from "react";
@@ -53,7 +53,7 @@ export default function StoryPage() {
 
         <section className="interior-hero">
           <div className="interior-hero-media">
-            <Image src={photo(25)} alt="The considered interiors of the Hotel Maghrib lobby in Ulcinj, Montenegro" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
+            <SmartImage src={photo(25)} alt="The considered interiors of the Hotel Maghrib lobby in Ulcinj, Montenegro" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
           </div>
           <div className="interior-hero-shade" />
           <div className="page-width interior-hero-inner">
@@ -80,7 +80,7 @@ export default function StoryPage() {
               <Reveal className="chapter-photo" delay={0.12}>
                 <div className="arch-photo">
                   <div className="arch-photo-crop">
-                    <Image src={photo([56, 50, 9][index])} alt={`Hotel Maghrib story — chapter ${index + 1}, halal hospitality in Ulcinj`} width={900} height={1200} loading="lazy" sizes="(max-width: 900px) 92vw, 44vw" />
+                    <SmartImage src={photo([56, 50, 9][index])} alt={`Hotel Maghrib story — chapter ${index + 1}, halal hospitality in Ulcinj`} width={900} height={1200} loading="lazy" sizes="(max-width: 900px) 92vw, 44vw" />
                   </div>
                   <span className="arch-photo-caption"><Khatim />{["The house on the hill.", "The morning spread.", "The people of the house."][index]}</span>
                 </div>

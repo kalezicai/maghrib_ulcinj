@@ -7,7 +7,7 @@
  */
 
 import { useState } from "react";
-import Image from "next/image";
+import SmartImage from "./SmartImage";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import Brand, { BrandDefs, Eyebrow, Khatim, Monogram, Seal } from "./Brand";
@@ -87,7 +87,7 @@ export function RoomsIndex({ heroPhotoNumber }: { heroPhotoNumber?: number }) {
       <main id="main-content">
         <section className="interior-hero">
           <div className="interior-hero-media">
-            <Image src={photo(35)} alt="" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
+            <SmartImage src={photo(35)} alt="" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
           </div>
           <div className="interior-hero-shade" />
           <div className="page-width interior-hero-inner">
@@ -105,7 +105,7 @@ export function RoomsIndex({ heroPhotoNumber }: { heroPhotoNumber?: number }) {
             <article className="room-index-row" key={suite.id} id={suite.id}>
               <Link className="room-index-photo" href={`/rooms/${suite.seoSlug}`} aria-label={`Open the ${suite.name} page`}>
                 <div className={`room-index-crop ${index % 2 === 1 ? "is-flipped" : ""}`}>
-                  <Image src={photo(suite.image)} alt={`${suite.name} with private sea-view balcony at the halal Hotel Maghrib, Ulcinj`} width={1200} height={900} priority={index === 0} sizes="(max-width: 900px) 100vw, 46vw" />
+                  <SmartImage src={photo(suite.image)} alt={`${suite.name} with private sea-view balcony at the halal Hotel Maghrib, Ulcinj`} width={1200} height={900} priority={index === 0} sizes="(max-width: 900px) 100vw, 46vw" />
                 </div>
               </Link>
               <div className="room-index-copy">
@@ -160,7 +160,7 @@ export function RoomDetail({ suite }: { suite: Suite }) {
         {/* H1 present in SSR for the crawler + a hidden one for the animated view. */}
                 <section className="room-hero">
           <div className="room-hero-media">
-            <Image src={photo(suite.image)} alt={`${suite.name} with private balcony overlooking the Adriatic Sea at Hotel Maghrib, Ulcinj`} width={1600} height={1000} priority sizes="100vw" />
+            <SmartImage src={photo(suite.image)} alt={`${suite.name} with private balcony overlooking the Adriatic Sea at Hotel Maghrib, Ulcinj`} width={1600} height={1000} priority sizes="100vw" />
           </div>
           <div className="room-hero-shade" />
           <div className="room-hero-content page-width">
@@ -193,7 +193,7 @@ export function RoomDetail({ suite }: { suite: Suite }) {
           <Reveal className="story-visual" >
             <div className="arch-photo">
               <div className="arch-photo-crop">
-                <Image src={photo(suite.images[1])} alt={`${suite.name} interior detail — ${suite.shortName} at the halal Hotel Maghrib in Ulcinj`} width={900} height={1200} loading="lazy" sizes="(max-width: 900px) 92vw, 44vw" />
+                <SmartImage src={photo(suite.images[1])} alt={`${suite.name} interior detail — ${suite.shortName} at the halal Hotel Maghrib in Ulcinj`} width={900} height={1200} loading="lazy" sizes="(max-width: 900px) 92vw, 44vw" />
               </div>
               <span className="arch-photo-caption"><Khatim />Filled with morning light.</span>
             </div>
@@ -224,7 +224,7 @@ export function RoomDetail({ suite }: { suite: Suite }) {
             {others.map((other) => (
               <Link key={other.id} className="other-room-card" href={`/rooms/${other.seoSlug}`}>
                 <div className="other-room-photo">
-                  <Image src={photo(other.image)} alt={`${other.name} at Hotel Maghrib, Ulcinj`} width={640} height={480} loading="lazy" sizes="30vw" />
+                  <SmartImage src={photo(other.image)} alt={`${other.name} at Hotel Maghrib, Ulcinj`} width={640} height={480} loading="lazy" sizes="30vw" />
                 </div>
                 <span className="other-room-name">{other.name}<ArrowRight size={16} /></span>
                 <span className="other-room-rate">From &euro;{other.price} / night</span>

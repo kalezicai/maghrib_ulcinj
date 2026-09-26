@@ -6,7 +6,7 @@
  */
 
 import { useState } from "react";
-import Image from "next/image";
+import SmartImage from "./SmartImage";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Plane, MapPin, Compass } from "lucide-react";
 import Brand, { BrandDefs, Eyebrow, Khatim, Monogram, Rule } from "./Brand";
@@ -61,7 +61,7 @@ export default function UlcinjPage() {
 
         <section className="interior-hero">
           <div className="interior-hero-media">
-            <Image src={photo(56)} alt="Ulcinj's Adriatic hillside above the sea with Hotel Maghrib among the Mediterranean pine trees" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
+            <SmartImage src={photo(56)} alt="Ulcinj's Adriatic hillside above the sea with Hotel Maghrib among the Mediterranean pine trees" width={2000} height={1100} priority sizes="100vw" fetchPriority="high" />
           </div>
           <div className="interior-hero-shade" />
           <div className="page-width interior-hero-inner">
@@ -80,7 +80,7 @@ export default function UlcinjPage() {
           {stops.map((stop, index) => (
             <Reveal className="stop-row" key={stop.name}>
               <div className={`stop-photo ${index % 2 === 1 ? "is-flipped" : ""}`}>
-                <Image src={photo(stop.image)} alt={`${stop.name} near Hotel Maghrib in Ulcinj, Montenegro`} width={960} height={720} loading="lazy" sizes="(max-width: 900px) 100vw, 44vw" />
+                <SmartImage src={photo(stop.image)} alt={`${stop.name} near Hotel Maghrib in Ulcinj, Montenegro`} width={960} height={720} loading="lazy" sizes="(max-width: 900px) 100vw, 44vw" />
               </div>
               <div className="stop-copy">
                 <p className="eyebrow"><Khatim className="eyebrow-star" />0{index + 1}</p>
